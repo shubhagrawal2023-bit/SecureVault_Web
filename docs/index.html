@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SecureVault Lite - simple password-based file encryption and decryption.">
+  <title>SecureVault Lite | File Protection</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="config.js"></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <a class="brand" href="./"><span class="brand-mark">SV</span><span>SecureVault <small>LITE</small></span></a>
+    <span class="local-badge"><span class="status-dot"></span> WEB EDITION</span>
+  </header>
+
+  <main class="container">
+    <section class="intro">
+      <div class="eyebrow"><span></span> SIMPLE FILE SECURITY</div>
+      <h1>Your files.<br><span>Your control.</span></h1>
+      <p class="subtitle">Encrypt files with a password and decrypt them when you need them. A simple web interface powered by a Python backend.</p>
+    </section>
+
+    <section class="workspace">
+      <div class="panel-heading">
+        <div><p class="section-label">FILE TOOL</p><h2>Protect a file</h2></div>
+        <div class="lock-icon">⌑</div>
+      </div>
+
+      <div class="alert" id="message" role="status" aria-live="polite" hidden></div>
+
+      <form id="vaultForm">
+        <label class="upload-zone" for="fileInput" id="dropZone">
+          <div class="upload-icon">↑</div>
+          <strong id="fileLabel">Choose a file or drop it here</strong>
+          <span id="fileHint">PDF, TXT, images and other files · Max 20 MB</span>
+          <input type="file" id="fileInput" required>
+        </label>
+
+        <label class="field-label" for="password">Password</label>
+        <div class="password-wrap">
+          <input type="password" id="password" placeholder="Enter a strong password" required>
+          <button type="button" id="togglePassword">SHOW</button>
+        </div>
+        <p class="password-note">Remember your password. SecureVault cannot recover it for you.</p>
+
+        <div class="action-grid">
+          <button class="action-btn encrypt" type="submit" data-action="encrypt">
+            <span class="button-symbol">↗</span>
+            <span><strong>Encrypt file</strong><small>Create a protected copy</small></span>
+          </button>
+          <button class="action-btn decrypt" type="submit" data-action="decrypt">
+            <span class="button-symbol">↙</span>
+            <span><strong>Decrypt file</strong><small>Restore your original file</small></span>
+          </button>
+        </div>
+        <div class="working" id="workingMessage" hidden>Processing file securely…</div>
+      </form>
+    </section>
+
+    <section class="info-row">
+      <article class="info-card"><span class="mini-icon">01</span><h3>Choose</h3><p>Select the file you want to protect or restore.</p></article>
+      <article class="info-card"><span class="mini-icon">02</span><h3>Secure</h3><p>The Python backend encrypts or decrypts the file.</p></article>
+      <article class="info-card"><span class="mini-icon">03</span><h3>Download</h3><p>Your processed file downloads through your browser.</p></article>
+    </section>
+
+
+    <section class="team-credit" aria-labelledby="team-heading">
+      <div class="team-heading">
+        <p class="section-label">THE PEOPLE BEHIND THE PROJECT</p>
+        <h2 id="team-heading">Project team</h2>
+        <p class="team-subtitle">Designed and developed as a collaborative first-year Python project.</p>
+      </div>
+      <div class="team-grid">
+        <article class="team-member team-leader">
+          <span class="team-role">TEAM LEADER</span>
+          <h3>Shubh Agrawal</h3>
+          <p>S26CSEU0383</p>
+        </article>
+        <article class="team-member">
+          <span class="team-role">TEAM MEMBER</span>
+          <h3>Aditya Ved</h3>
+          <p>S26CSEU0378</p>
+        </article>
+        <article class="team-member">
+          <span class="team-role">TEAM MEMBER</span>
+          <h3>Pranjul Agrawal</h3>
+          <p>S26CSEU0359</p>
+        </article>
+        <article class="team-member">
+          <span class="team-role">TEAM MEMBER</span>
+          <h3>Raghav Tiwari</h3>
+          <p>S26CSEU0362</p>
+        </article>
+        <article class="team-member">
+          <span class="team-role">TEAM MEMBER</span>
+          <h3>Lakshay</h3>
+          <p>S26CSEU0380</p>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      <span>SECUREVAULT LITE · FIRST-YEAR PYTHON PROJECT</span>
+      <span>GitHub Pages + Flask API</span>
+    </footer>
+  </main>
+</body>
+</html>

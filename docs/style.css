@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
+:root{--bg:#080e18;--panel:rgba(16,27,44,.9);--line:#25364e;--text:#edf4ff;--muted:#93a7c1;--teal:#4de0c1;--blue:#73a9ff}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;color:var(--text);background:var(--bg);font-family:Manrope,system-ui,sans-serif;overflow-x:hidden}
+.ambient{position:fixed;width:420px;height:420px;border-radius:50%;filter:blur(110px);opacity:.13;pointer-events:none}.ambient-one{background:#21d7bc;top:-180px;left:-120px}.ambient-two{background:#3b82f6;right:-180px;bottom:-180px}
+.topbar{height:78px;display:flex;align-items:center;justify-content:space-between;padding:0 max(5vw,24px);border-bottom:1px solid rgba(147,167,193,.13);position:relative}
+.brand{display:flex;gap:12px;align-items:center;color:var(--text);text-decoration:none;font-weight:800;letter-spacing:-.5px}.brand small{color:var(--teal);font:500 10px 'DM Mono',monospace;letter-spacing:2px;margin-left:4px}
+.brand-mark{width:34px;height:34px;border:1px solid var(--teal);color:var(--teal);display:grid;place-items:center;border-radius:10px;font:700 12px 'DM Mono',monospace}
+.local-badge{color:var(--muted);font:10px 'DM Mono',monospace;letter-spacing:1.2px;border:1px solid var(--line);padding:9px 12px;border-radius:30px}.status-dot{display:inline-block;width:6px;height:6px;background:var(--teal);border-radius:50%;margin-right:7px;box-shadow:0 0 10px var(--teal)}
+.container{width:min(940px,90%);margin:0 auto;position:relative}.intro{padding:62px 0 35px;max-width:670px}.eyebrow,.section-label{color:var(--teal);font:11px 'DM Mono',monospace;letter-spacing:2px}.eyebrow span{display:inline-block;width:22px;height:1px;background:var(--teal);vertical-align:middle;margin-right:8px}
+h1{font-size:clamp(42px,6vw,68px);line-height:1.06;letter-spacing:-3px;margin:17px 0;font-weight:800}h1 span{color:var(--teal)}.subtitle{color:var(--muted);font-size:15px;line-height:1.8;max-width:550px}
+.workspace{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:30px;box-shadow:0 25px 80px rgba(0,0,0,.2);backdrop-filter:blur(12px)}
+.panel-heading{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}.section-label{font-size:9px;margin:0 0 8px}h2{margin:0;font-size:23px;letter-spacing:-.7px}.lock-icon{width:43px;height:43px;border:1px solid #2b4a5a;color:var(--teal);border-radius:13px;display:grid;place-items:center;font-size:28px}
+.upload-zone{border:1px dashed #38516c;background:rgba(8,14,24,.45);border-radius:15px;min-height:175px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:.2s;text-align:center;padding:20px}
+.upload-zone:hover,.upload-zone.dragging{border-color:var(--teal);background:rgba(77,224,193,.06)}.upload-icon{color:var(--teal);border:1px solid #2a5d5a;background:#102b30;border-radius:12px;width:42px;height:42px;display:grid;place-items:center;font-size:26px;margin-bottom:12px}
+.upload-zone strong{font-size:14px}.upload-zone span{color:var(--muted);font-size:11px;margin-top:7px}#fileInput{display:none}
+.field-label{display:block;margin:22px 0 9px;color:#c6d5e9;font-size:12px;font-weight:700}.password-wrap{display:flex;border:1px solid var(--line);border-radius:11px;background:#0b1422;overflow:hidden}
+.password-wrap:focus-within{border-color:#4b9eaa}.password-wrap input{flex:1;min-width:0;background:transparent;border:0;outline:0;color:var(--text);padding:15px;font:13px Manrope,sans-serif}
+.password-wrap button{border:0;background:transparent;color:var(--teal);padding:0 16px;cursor:pointer;font:10px 'DM Mono',monospace}
+.password-note{font-size:10px;color:#7187a3;margin:8px 0 21px}.action-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.action-btn{display:flex;align-items:center;text-align:left;gap:13px;padding:16px;border-radius:12px;cursor:pointer;transition:.2s}.action-btn:hover{transform:translateY(-2px);filter:brightness(1.1)}.action-btn:disabled{opacity:.55;cursor:wait}
+.encrypt{border:1px solid #287e70;background:linear-gradient(120deg,#103b38,#102b32);color:var(--text)}.decrypt{border:1px solid #315b91;background:linear-gradient(120deg,#172e4b,#15263c);color:var(--text)}
+.button-symbol{font-size:24px;color:var(--teal)}.decrypt .button-symbol{color:var(--blue)}.action-btn strong,.action-btn small{display:block}.action-btn strong{font-size:12px}.action-btn small{color:var(--muted);font-size:10px;margin-top:4px}
+.working{color:var(--teal);font:11px 'DM Mono',monospace;margin-top:16px}.alert{padding:13px 15px;border-radius:10px;margin:0 0 18px;font-size:12px}.error{color:#ffb4b4;border:1px solid #6d363d;background:#321b25}.success{color:#a7f3d0;border:1px solid #287e70;background:#103b38}
+.info-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0 48px}.info-card{padding:19px;border:1px solid rgba(37,54,78,.8);border-radius:14px;background:rgba(14,23,37,.55)}
+.mini-icon{color:var(--teal);font:10px 'DM Mono',monospace}.info-card h3{font-size:13px;margin:10px 0 5px}.info-card p{font-size:11px;line-height:1.6;color:var(--muted);margin:0}
+footer{border-top:1px solid rgba(147,167,193,.13);padding:20px 0 28px;display:flex;justify-content:space-between;gap:15px;color:#657991;font:9px 'DM Mono',monospace;letter-spacing:.6px}
+@media(max-width:650px){.intro{padding-top:42px}h1{letter-spacing:-2px}.workspace{padding:20px}.action-grid,.info-row{grid-template-columns:1fr}footer{flex-direction:column}}
+
+.team-credit{margin:8px 0 42px;padding:28px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(135deg,rgba(16,39,49,.82),rgba(16,27,44,.9))}
+.team-heading{margin-bottom:20px}
+.team-heading h2{font-size:23px;margin:0 0 7px}
+.team-subtitle{color:var(--muted);font-size:12px;margin:0;line-height:1.7}
+.team-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.team-member{position:relative;min-height:112px;padding:17px;border:1px solid rgba(77,224,193,.17);border-radius:13px;background:rgba(8,14,24,.55)}
+.team-member.team-leader{border-color:rgba(77,224,193,.6);background:linear-gradient(135deg,rgba(20,65,59,.75),rgba(8,25,34,.75))}
+.team-role{display:inline-block;color:var(--teal);font:9px 'DM Mono',monospace;letter-spacing:1.2px;margin-bottom:12px}
+.team-member h3{font-size:14px;margin:0 0 5px;color:var(--text)}
+.team-member p{font:10px 'DM Mono',monospace;color:var(--muted);margin:0}
+@media(max-width:650px){.team-credit{padding:20px}.team-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:420px){.team-grid{grid-template-columns:1fr}}

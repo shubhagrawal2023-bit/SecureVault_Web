@@ -1,55 +1,90 @@
-# SecureVault Lite — Web Edition
+# SecureVault Lite — GitHub Pages + Render Edition
 
-A beginner-friendly file encryption/decryption web app built with Flask (Python), HTML, CSS, JavaScript, and the `cryptography` library.
+This version publishes the **frontend on GitHub Pages** and runs the **Python/Flask encryption API on Render**.
 
-## Features
-- Web interface for file selection
-- Password-based encryption and decryption
-- Supports binary files (PDF, images, text, etc.)
-- Download processed file from the browser
-- Wrong-password and invalid-file messages
-- Original local file is not modified
-- 20 MB upload limit for this classroom version
+GitHub Pages only hosts static files; it cannot run Python. The browser frontend therefore sends file data to the Flask API hosted separately.
 
-## Setup (Windows / VS Code)
-
-1. Extract this folder.
-2. Open `SecureVault_Web` in VS Code.
-3. Open **Terminal → New Terminal**.
-4. Install dependencies:
-
-```powershell
-py -m pip install -r requirements.txt
-```
-
-5. Start the local server:
-
-```powershell
-py app.py
-```
-
-6. Open this address in Chrome or Edge:
+## Folder structure
 
 ```text
-http://127.0.0.1:5000
+SecureVault_GitHubPages_Render/
+├── app.py                 # Flask API (deploy to Render)
+├── encryption.py          # Password key derivation + Fernet encryption
+├── requirements.txt
+├── .gitignore
+└── docs/                  # Publish this folder with GitHub Pages
+    ├── index.html
+    ├── style.css
+    ├── script.js
+    └── config.js
 ```
 
-Keep the terminal open while using the website. Press `Ctrl + C` in the terminal to stop the server.
+## Part A — Publish the Python backend on Render
 
-## How to demonstrate
-1. Make a sample text file with non-sensitive test text.
-2. On the website, select the file and enter a password.
-3. Click **Encrypt file** and download the `.enc` file.
-4. Select that `.enc` file, enter the same password, and click **Decrypt file**.
-5. Open the restored file and compare the contents.
-6. Try a wrong password to demonstrate error handling.
+1. Push the contents of this folder to your GitHub repository.
+2. On Render, create a **New → Web Service** and connect the repository. Authorize Render to access this repository if it is private.
+3. Set:
+   - Runtime: `Python 3`
+   - Build command: `pip install -r requirements.txt`
+   - Start command: `gunicorn app:app --bind 0.0.0.0:$PORT`
+4. Add environment variable:
+   - Key: `FRONTEND_ORIGIN`
+   - Value: `https://shubhagrawal2023-bit.github.io`
+5. Deploy. Copy the service URL, for example `https://your-service-name.onrender.com`.
 
-## Project architecture
-- `app.py`: Flask routes, file upload handling, and download response.
-- `encryption.py`: Password key derivation and encryption/decryption functions.
-- `templates/index.html`: Web page structure.
-- `static/style.css`: Interface styling.
-- `static/script.js`: File selection, drag-and-drop, and password visibility.
+## Part B — Connect the frontend to Render
 
-## Security / scope note
-This is an educational local application, not a production-ready file security service. It does not store uploaded files permanently, but files are processed by the local Python server. Do not expose the development server to the public internet or use it for highly sensitive data. Password recovery is not available.
+Open `docs/config.js` and replace:
+
+```javascript
+API_BASE_URL: "https://YOUR-RENDER-SERVICE.onrender.com"
+```
+
+with the actual Render service URL, e.g.:
+
+```javascript
+API_BASE_URL: "https://your-service-name.onrender.com"
+```
+
+Commit and push this change to GitHub.
+
+## Part C — Enable GitHub Pages
+
+For GitHub Free, the repository must be public to publish a Pages site.
+
+1. In GitHub, open the repository → **Settings → Pages**.
+2. Under **Build and deployment**, choose **Deploy from a branch**.
+3. Select branch `main` and folder `/docs`.
+4. Click **Save**.
+5. Wait for the Pages deployment to finish. GitHub will display the website URL under Settings → Pages.
+
+For the repository `SecureVault_Web` owned by `shubhagrawal2023-bit`, the expected project URL is:
+
+`https://shubhagrawal2023-bit.github.io/SecureVault_Web/`
+
+## Local development
+
+1. Install dependencies: `py -m pip install -r requirements.txt`
+2. Start backend: `py app.py`
+3. In `docs/config.js`, temporarily set `API_BASE_URL` to `http://127.0.0.1:5000`.
+4. Open `docs/index.html` using VS Code Live Server or another static server.
+
+The browser origin must be allowed by CORS. For local development, temporarily set `FRONTEND_ORIGIN` to the local origin shown by Live Server, for example `http://127.0.0.1:5500`.
+
+## Security and limitations
+
+- Educational demonstration only; not a professionally audited security service.
+- Maximum upload size is 20 MB.
+- The backend processes uploads in memory and does not intentionally save uploaded files to disk.
+- Render free web services can spin down after inactivity, so the first request may be delayed.
+- Do not upload confidential documents, real cryptocurrency wallet files, or private keys.
+- Use a strong unique password; password recovery is not available.
+- The repository source code is public when using GitHub Free Pages on a public repository; do not commit secrets.
+
+## Project team
+
+- **Shubh Agrawal** — Team Leader — `S26CSEU0383`
+- **Aditya Ved** — Team Member — `S26CSEU0378`
+- **Pranjul Agrawal** — Team Member — `S26CSEU0359`
+- **Raghav Tiwari** — Team Member — `S26CSEU0362`
+- **Lakshay** — Team Member — `S26CSEU0380`
