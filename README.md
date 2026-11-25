@@ -76,7 +76,7 @@ The browser origin must be allowed by CORS. For local development, temporarily s
 - Educational demonstration only; not a professionally audited security service.
 - Maximum upload size is 20 MB.
 - The backend processes uploads in memory and does not intentionally save uploaded files to disk.
-- Render free web services can spin down after inactivity, so the first request may be delayed.
+- Render free web services can spin down after inactivity so the first request may be delayed.
 - Do not upload confidential documents, real cryptocurrency wallet files, or private keys.
 - Use a strong unique password; password recovery is not available.
 - The repository source code is public when using GitHub Free Pages on a public repository; do not commit secrets.
