@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SecureVault Lite | File Protection</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <header class="topbar">
+    <a class="brand" href="/">
+      <span class="brand-mark">SV</span>
+      <span>SecureVault <small>LITE</small></span>
+    </a>
+    <span class="local-badge"><span class="status-dot"></span> LOCAL APP</span>
+  </header>
+
+  <main class="container">
+    <section class="intro">
+      <div class="eyebrow"><span></span> SIMPLE FILE SECURITY</div>
+      <h1>Your files.<br><span>Your control.</span></h1>
+      <p class="subtitle">Encrypt files with a password and decrypt them when you need them. Simple, private, and powered by Python.</p>
+    </section>
+
+    <section class="workspace">
+      <div class="panel-heading">
+        <div>
+          <p class="section-label">FILE TOOL</p>
+          <h2>Protect a file</h2>
+        </div>
+        <div class="lock-icon">⌑</div>
+      </div>
+
+      {% if error %}
+      <div class="alert error" role="alert">{{ error }}</div>
+      {% endif %}
+
+      <form action="{{ url_for('process_file') }}" method="POST" enctype="multipart/form-data" id="vaultForm">
+        <label class="upload-zone" for="fileInput" id="dropZone">
+          <div class="upload-icon">↑</div>
+          <strong id="fileLabel">Choose a file or drop it here</strong>
+          <span id="fileHint">PDF, TXT, images and other files · Max 20 MB</span>
+          <input type="file" name="file" id="fileInput" required>
+        </label>
+
+        <label class="field-label" for="password">Password</label>
+        <div class="password-wrap">
+          <input type="password" name="password" id="password" placeholder="Enter a strong password" required minlength="1">
+          <button type="button" id="togglePassword" aria-label="Show password">SHOW</button>
+        </div>
+        <p class="password-note">Remember your password. SecureVault cannot recover it for you.</p>
+
+        <div class="action-grid">
+          <button class="action-btn encrypt" type="submit" name="action" value="encrypt">
+            <span class="button-symbol">↗</span>
+            <span><strong>Encrypt file</strong><small>Create a protected copy</small></span>
+          </button>
+          <button class="action-btn decrypt" type="submit" name="action" value="decrypt">
+            <span class="button-symbol">↙</span>
+            <span><strong>Decrypt file</strong><small>Restore your original file</small></span>
+          </button>
+        </div>
+        <div class="working" id="workingMessage">Processing file securely…</div>
+      </form>
+    </section>
+
+    <section class="info-row">
+      <article class="info-card">
+        <span class="mini-icon">01</span>
+        <h3>Choose</h3>
+        <p>Select the file you want to protect or restore.</p>
+      </article>
+      <article class="info-card">
+        <span class="mini-icon">02</span>
+        <h3>Secure</h3>
+        <p>Python uses password-based encryption.</p>
+      </article>
+      <article class="info-card">
+        <span class="mini-icon">03</span>
+        <h3>Download</h3>
+        <p>Your processed file is downloaded by the browser.</p>
+      </article>
+    </section>
+
+    <footer>
+      <span>SECUREVAULT LITE · FIRST-YEAR PYTHON PROJECT</span>
+      <span>Built with Flask + Cryptography</span>
+    </footer>
+  </main>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
